@@ -5,11 +5,19 @@
 <div class="posts">
   <div class="post">
     <h3><?php echo $post_data->post_title; ?></h3>
-    <h6>By <a href="<?php echo BASE_URL; ?>/profile?user=<?php echo $post_data->user_username; ?>"><?php echo $post_data->user_username; ?></a> on <?php echo date('l j F Y H:i', strtotime($post_data->post_date)); ?></h6>
+    <h6>By
+      <?php if($post_data->user_username): ?>
+        <a href="<?php echo BASE_URL; ?>/profile/<?php echo $post_data->user_username; ?>"><?php echo $post_data->user_username; ?></a>
+      <?php else: ?>
+        [Deleted]
+      <?php endif; ?>
+
+      on <?php echo date('l j F Y H:i', strtotime($post_data->post_date)); ?>
+    </h6>
     <p><?php echo $post_data->post_text; ?></p>
   </div>
   
-  <?php if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
+  <?php if(isset($_SESSION['user'])): ?>
     <div class="submit-comment">
       <div class="form">
         <h2>Comment</h2>
@@ -36,7 +44,15 @@
   <div class="comments">
     <?php foreach($comments as $comment): ?>
       <div class="post">
-        <h6>By <a href="<?php echo BASE_URL; ?>/profile?user=<?php echo $comment->user_username; ?>"><?php echo $comment->user_username; ?></a> on <?php echo date('l j F Y H:i', strtotime($comment->comment_date)); ?></h6>
+        <h6>By
+          <?php if($comment->user_username): ?>
+            <a href="<?php echo BASE_URL; ?>/profile/<?php echo $comment->user_username; ?>"><?php echo $comment->user_username; ?></a>
+          <?php else: ?>
+            [Deleted]
+          <?php endif; ?>
+
+          on <?php echo date('l j F Y H:i', strtotime($comment->comment_date)); ?>
+        </h6>
         <p><?php echo $comment->comment_text; ?></p>
       </div>
     <?php endforeach; ?>

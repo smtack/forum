@@ -14,12 +14,13 @@
     <h1><a href="<?php echo BASE_URL; ?>">forum</a></h1>
 
     <ul>
-      <?php if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
-        <img class="toggle-menu" src="<?php echo BASE_URL; ?>/public/img/menu.svg" alt="Toggle Menu">
+      <?php if(isset($_SESSION['user'])): ?>
+        <li><a href="<?php echo BASE_URL; ?>/all"><img src="<?php echo BASE_URL; ?>/public/img/all.svg" alt="All"></a></li>
+        <li><img class="toggle-menu" src="<?php echo BASE_URL; ?>/public/img/menu.svg" alt="Toggle Menu"></li>
 
         <div class="menu">
           <ul>
-            <a href="<?php echo BASE_URL; ?>/profile?user=<?php echo $_SESSION['user_username']; ?>"><li>Your Profile</li></a>
+            <a href="<?php echo BASE_URL; ?>/profile/<?php echo $_SESSION['user']; ?>"><li>Your Profile</li></a>
             <a href="<?php echo BASE_URL; ?>/update"><li>Update Profile</li></a>
             <a href="<?php echo BASE_URL; ?>/logout"><li>Log Out</li></a>
           </ul>

@@ -10,7 +10,7 @@ class Database {
   public $dsn;
   public $opt;
 
-  public function connect() {
+  public function __construct() {
     $this->pdo = null;
 
     $this->dsn = "mysql:host=" . $this->dbhost . ";dbname=" . $this->dbname . ";charset=" . $this->dbchar;
@@ -28,5 +28,95 @@ class Database {
     }
 
     return $this->pdo;
+  }
+
+  public function insert($table, $array) {
+    $sql = "INSERT INTO " . $table . " (";
+    $pref = "";
+
+    foreach($array as $key => $value) {
+      $sql .= $pref . $key;
+      $pref = ", ";
+    }
+
+    $sql .= ") VALUES (";
+    $pref = "";
+
+    foreach($array as $key => $value) {
+      $sql .= $pref . "'" . $value . "'";
+      $pref = ", ";
+    }
+
+    $sql .= ");";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+  }
+
+  public function select($table, $array) {
+    $sql = "SELECT * FROM " . $table;
+    $pref = " WHERE ";
+
+    foreach($array as $key => $value) {
+      $sql .= $pref . $key . "='" . $value . "'";
+      $pref = " AND ";
+    }
+
+    $sql .= ";";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+  }
+
+  public function update($table, $array, $field) {
+    $sql = "UPDATE " . $table . " SET ";
+    $pref = "";
+
+    foreach($array as $key => $value) {
+      $sql .= $pref . $key . "='" . $value . "'";
+      $pref = ", ";
+    }
+
+    $sql .= " WHERE ";
+    $pref = "";
+
+    foreach($field as $key => $value) {
+      $sql .= $pref . $key . "='" . $value . "'";
+      $pref = " AND ";
+    }
+
+    $sql .= ";";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+  }
+
+  public function delete($table, $array) {
+    $sql = "DELETE FROM " . $table;
+    $pref = " WHERE ";
+
+    foreach($array as $key => $value) {
+      $sql .= $pref . $key . "='" . $value . "'";
+      $pref = " AND ";
+    }
+
+    $sql .= ";";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+
+    return $stmt;
+  }
+
+  public function exists($table, $array) {
+    $stmt = $this->select($table, $array);
+
+    return ($stmt->rowCount() > 0) ? true : false;
   }
 }

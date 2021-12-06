@@ -5,20 +5,22 @@ $user = new User($db);
 $category = new Category($db);
 $post = new Post($db);
 
-if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-  $user_data = $user->getUser();
+if(isset($_SESSION['user'])) {
+  $user_data = $user->getUser($_SESSION['user']);
+  $categories = $category->getUsersFollows($user_data->user_id);
 }
 
-if(isset($_GET['id']) && !empty($_GET['id'])) {
-  if(!$category_data = $category->getCategory($_GET['id'])) {
+if(isset($_GET['query']) && !empty($_GET['query'])) {
+  if(!$category_data = $category->getCategory($_GET['query'])) {
     header('Location: ' . BASE_URL);
   }
 } else {
   header('Location: ' . BASE_URL);
 }
 
-$categories = $category->getCategories();
-$posts = $post->getPostsByCategory($_GET['id']);
+$posts = $post->getPostsByCategory($_GET['query']);
+
+$follow_data = $category->getFollowData($category_data->category_id);
 
 $page_title = $category_data->category_name;
 

@@ -25,6 +25,15 @@ CREATE TABLE `categories` (
   PRIMARY KEY (category_id)
 ) ENGINE=INNODB;
 
+-- CREATE FOLLOWS TABLE
+
+CREATE TABLE `follows` (
+  `follow_id` INT(8) NOT NULL AUTO_INCREMENT,
+  `user_following` INT(8) NOT NULL,
+  `category_followed` INT(8) NOT NULL,
+  PRIMARY KEY (follow_id)
+) ENGINE=INNODB;
+
 -- CREATE POSTS TABLE
 
 CREATE TABLE `posts` (

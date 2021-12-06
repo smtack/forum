@@ -61,6 +61,9 @@
       <?php endif; ?>
     </div>
     <div class="form-group">
+      <input type="password" name="user_password" placeholder="Enter Password">
+    </div>
+    <div class="form-group">
       <input type="submit" name="delete_profile" value="Delete Profile">
     </div>
   </form>

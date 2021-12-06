@@ -5,28 +5,31 @@ $user = new User($db);
 $category = new Category($db);
 $post = new Post($db);
 
-if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-  $user_data = $user->getUser();
+if(isset($_SESSION['user'])) {
+  $user_data = $user->getUser($_SESSION['user']);
+  $categories = $category->getUsersFollows($user_data->user_id);
 }
 
-if(isset($_GET['id']) && !empty($_GET['id'])) {
-  if(!$post_data = $post->getPost($_GET['id'])) {
+if(isset($_GET['query']) && !empty($_GET['query'])) {
+  if(!$post_data = $post->getPost($_GET['query'])) {
     header('Location: ' . BASE_URL);
   }
 } else {
   header('Location: ' . BASE_URL);
 }
 
-$categories = $category->getCategories();
-$comments = $post->getComments($_GET['id']);
+$comments = $post->getComments($_GET['query']);
 
 if(isset($_POST['create_comment'])) {
   if(!empty($_POST['comment_text'])) {
-    $post->comment_post = $post_data->post_id;
-    $post->comment_by = $user_data->user_id;
+    $comment = [
+      'comment_text' => escape($_POST['comment_text']),
+      'comment_post' => $post_data->post_id,
+      'comment_by' => $user_data->user_id
+    ];
 
-    if($post->createComment()) {
-      header('Location: ' . BASE_URL . '/post?id=' . $post_data->post_id);
+    if($post->createComment($comment)) {
+      header('Location: ' . BASE_URL . '/post/' . $post_data->post_id);
     } else {
       $error = "Unable to post comment";
     }
