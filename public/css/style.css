@@ -6,96 +6,31 @@
 }
 
 a {
-  color: #24252a;
+  color: #4b77be;
   text-decoration: none;
 }
 
-.header {
-  height: 75px;
-  border-bottom: 1px solid #d3d3d3;
+.container {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .header h1 {
-  position: absolute;
-  top: 20px;
-  left: 2.5%;
-}
-
-.header ul {
-  list-style-type: none;
-  position: absolute;
-  top: 15px;
-  right: 2.5%;
-}
-
-.header ul li {
-  display: inline-block;
-}
-
-.header ul li img {
-  margin-left: 25px;
-}
-
-.header button {
-  height: 40px;
-  margin: 0 0 0 10px;
-  display: inline-block;
-  padding: 0 25px;
-  background-color: #24252a;
-  color: #ffffff;
-  border: 1px solid #24252a;
-  border-radius: 5px;
-}
-
-.header button:hover {
-  background-color: #ffffff;
-  color: #24252a;
-  cursor: pointer;
-}
-
-.toggle-menu {
-  margin-top: 15px;
-}
-
-.toggle-menu:hover {
-  cursor: pointer;
-}
-
-.menu {
-  display: none;
-  position: absolute;
-  right: 2.5%;
-  top: 59px;
-  min-width: 200px;
-  background-color: #ffffff;
-  z-index: 110;
-  border: 1px solid #d3d3d3;
-  border-radius: 5px;
-}
-
-.menu ul {
-  position: initial;
-}
-
-.menu ul li {
-  width: 100%;
-  margin: 0;
-  display: block;
-  padding: 15px 10px;
-}
-
-.menu ul li:hover {
-  background-color: #fafafa;
+  font-size: 72px;
+  text-align: center;
+  padding: 10px 0;
+  margin: 50px;
 }
 
 .form {
   width: 500px;
-  margin: 50px auto;
+  margin: 100px auto;
 }
 
 .form h2 {
+  font-weight: 100;
   padding: 25px 0;
-  font-weight: lighter;
+  color: #4b77be;
 }
 
 .form-group {
@@ -105,9 +40,9 @@ a {
 .form-group input {
   width: 100%;
   height: 40px;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 10px 15px;
   border: 1px solid #d3d3d3;
+  border-radius: 50px;
 }
 
 .form-group input:active,
@@ -117,29 +52,29 @@ a {
 .form-group select:active,
 .form-group select:focus {
   outline: none;
-  border: 1px solid #24252a;
+  border: 1px solid #4b77be;
 }
 
 .form-group input[type="submit"] {
   width: initial;
   padding: 0 25px;
-  background-color: #24252a;
+  background-color: #4b77be;
   color: #ffffff;
-  border: 1px solid #24252a;
+  border: 1px solid #4b77be;
 }
 
 .form-group input[type="submit"]:hover {
   background-color: #ffffff;
-  color: #24252a;
+  color: #4b77be;
   cursor: pointer;
 }
 
 .form-group textarea {
   width: 100%;
-  height: 300px;
+  height: 250px;
   padding: 10px;
-  border-radius: 5px;
   border: 1px solid #d3d3d3;
+  border-radius: 5px;
   resize: none;
 }
 
@@ -147,27 +82,56 @@ a {
   width: 100%;
   height: 40px;
   padding: 10px;
-  border-radius: 5px;
   border: 1px solid #d3d3d3;
+  border-radius: 50px;
 }
 
 .error {
-  height: 40px;
-  padding: 10px;
+  height: 50px;
+  padding: 15px;
   color: #721c24;
   background-color: #f8d7da;
   border: 1px solid #721c24;
+  border-radius: 50px;
+}
+
+.flash {
+  width: 100%;
+  height: 50px;
+  margin: 50px 0 25px 0;
+  background-color: lightblue;
+  color: darkslategrey;
   border-radius: 5px;
+}
+
+.flash p {
+  float: left;
+  padding: 15px;
+}
+
+.close {
+  float: right;
+  padding: 10px 15px;
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close:hover {
+  cursor: pointer;
 }
 
 .sidebar {
   width: 30%;
-  min-height: 100px;
-  margin: 2.5%;
-  border: 1px solid #d3d3d3;
-  border-radius: 5px;
+  margin: 50px 0;
   float: left;
-  padding: 25px;
+}
+
+.sidebar h1 {
+  font-size: 40px;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 50px;
 }
 
 .sidebar button {
@@ -175,31 +139,22 @@ a {
   height: 40px;
   margin: 25px auto;
   display: block;
-  background-color: #24252a;
+  background-color: #4b77be;
   color: #ffffff;
-  border: 1px solid #24252a;
-  border-radius: 5px;
+  border: 1px solid #4b77be;
+  border-radius: 50px;
 }
 
 .sidebar button:hover {
   background-color: #ffffff;
-  color: #24252a;
+  color: #4b77be;
   cursor: pointer;
 }
 
 .sidebar .form,
 .sidebar .form-group input {
   width: 100%;
-}
-
-.search input[type="text"] {
-  width: 85%;
-}
-
-.search input[type="image"] {
-  width: 12.5%;
-  float: right;
-  padding: 7.5px;
+  margin: 25px 0;
 }
 
 .sidebar h2 {
@@ -219,31 +174,81 @@ a {
   background-color: #fafafa;
 }
 
-.category-info {
-  margin: 25px 0;
-  border-top: 1px solid #d3d3d3;
-  border-bottom: 1px solid #d3d3d3;
+.user-info {
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  padding: 10px;
 }
 
-.category-info h1 {
-  font-weight: 100;
+.toggle-menu {
+  margin: -20px 0;
+  float: right;
+}
+
+.toggle-menu:hover {
+  cursor: pointer;
+}
+
+.menu {
+  width: 100%;
+  margin: 25px 0;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+}
+
+.menu ul {
+  margin: 0;
+  text-align: center;
+}
+
+.menu ul li {
+  padding: 15px;
+}
+
+.menu ul li:hover {
+  background-color: #fafafa;
+}
+
+.category-info {
+  margin: 25px 0;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.category-info h2 {
   padding: 10px 0;
 }
 
 .category-info p {
   padding: 10px 0;
+  color: #666666;
+}
+
+.category-info button {
+  width: 90%;
 }
 
 .posts {
   width: 60%;
   min-height: 100px;
-  margin: 2.5%;
+  float: right;
+  margin: 50px 0;
   border: 1px solid #d3d3d3;
   border-radius: 5px;
-  float: right;
+}
+
+.posts .form {
+  width: 80%;
+}
+
+#heading {
+  font-weight: 100;
 }
 
 .message {
+  font-weight: 100;
+  text-align: center;
   padding: 25px;
 }
 
@@ -287,7 +292,7 @@ a {
 }
 
 .heading ul li:hover {
-  border-bottom: 3px solid #24252a !important;
+  border-bottom: 3px solid #4b77be !important;
 }
 
 .submit-comment {
@@ -304,36 +309,54 @@ a {
   height: 200px;
 }
 
-.footer {
-  clear: both;
-  border-top: 1px solid #d3d3d3;
-}
-
-.footer p {
+.footer p,
+.page-footer p {
   font-size: 12px;
   color: #818181;
   text-align: center;
   padding: 25px;
 }
 
+.error-page {
+  margin: 100px 0;
+}
+
+.error-page h1 {
+  text-align: center;
+  font-size: 62px;
+  font-weight: 100;
+}
+
+.error-page p {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 50px;
+}
+
+@media(max-width: 1200px) {
+  .container {
+    width: 90%;
+  }
+}
+
 @media(max-width: 900px) {
   .header h1 {
-    left: 5%;
-  }
-
-  .header ul,
-  .menu {
-    right: 5%;
+    font-size: 62px;
   }
 
   .form {
-    width: 90%;
+    width: 100%;
+  }
+
+  .flash {
+    width: 100%;
+    margin: 50px auto;
   }
 
   .sidebar,
   .posts {
-    width: 90%;
-    margin: 5% auto;
+    width: 100%;
+    margin: 50px auto;
     float: none;
   }
 }

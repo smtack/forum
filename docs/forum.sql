@@ -2,6 +2,10 @@
 
 CREATE DATABASE `forum`;
 
+-- USE DATABASE
+
+USE `forum`;
+
 -- CREATE USERS TABLE
 
 CREATE TABLE `users` (
@@ -12,6 +16,15 @@ CREATE TABLE `users` (
   `user_joined` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `user_level` INT(8) NOT NULL,
   PRIMARY KEY (user_id)
+) ENGINE=INNODB;
+
+-- CREATE USER AUTH TABLE
+
+CREATE TABLE `user_auth` (
+  `auth_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `auth_hash` VARCHAR(256) NOT NULL,
+  `auth_user` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (auth_id)
 ) ENGINE=INNODB;
 
 -- CREATE CATEGORIES TABLE

@@ -1,15 +1,13 @@
-<?php require_once VIEW_ROOT . '/includes/header.php'; ?>
+<div class="header">
+  <h1><a href="/index">forum</a></h1>
+</div>
 
 <div class="form">
   <h2>Sign Up</h2>
   
-  <form action="<?php $self; ?>" method="POST">
+  <form action="/register" method="POST">
     <div class="form-group">
-      <?php if(isset($error)): ?>
-        <div class="error">
-          <p><?php echo $error; ?></p>
-        </div>
-      <?php endif; ?>
+      <?php error('form_error'); ?>
     </div>
     <div class="form-group">
       <input type="text" name="user_username" placeholder="Username">
@@ -24,12 +22,15 @@
       <input type="password" name="confirm_password" placeholder="Confirm Password">
     </div>
     <div class="form-group">
+      <input type="hidden" name="token" value="<?php echo generate('token'); ?>">
       <input type="submit" name="signup" value="Sign Up">
     </div>
     <div class="form-group">
-      <p>Already have an account? <a href="<?php echo BASE_URL; ?>/login">Log In</a></p>
+      <p>Already have an account? <a href="/login">Log In</a></p>
     </div>
   </form>
 </div>
 
-<?php require_once VIEW_ROOT . '/includes/footer.php'; ?>
+<div class="page-footer">
+  <p>&copy; <?=date('Y')?> forum</p>
+</div>

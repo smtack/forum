@@ -1,18 +1,16 @@
 <?php
-require_once 'src/init.php';
+require_once "src/config.php";
 
-$user = new User($db);
-$category = new Category($db);
-$post = new Post($db);
+spl_autoload_register(function($class) {
+  require_once "src/classes/" . $class . ".php";
+});
 
-if(isset($_SESSION['user'])) {
-  $user_data = $user->getUser($_SESSION['user']);
-  $posts = $post->getHomepagePosts($user_data->user_id);
-  $categories = $category->getUsersFollows($user_data->user_id);
-} else {
-  $posts = $post->getPosts();
-}
+include_once "src/functions.php";
 
+// set_error_handler('errorHandler');
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
 
+session_start();
 
-require VIEW_ROOT . '/index.php';
+$forum = new Controller();

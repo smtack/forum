@@ -50,6 +50,7 @@ class Database {
     $sql .= ");";
 
     $stmt = $this->pdo->prepare($sql);
+
     $stmt->execute();
 
     return $stmt;
@@ -67,6 +68,7 @@ class Database {
     $sql .= ";";
 
     $stmt = $this->pdo->prepare($sql);
+
     $stmt->execute();
 
     return $stmt;
@@ -92,6 +94,7 @@ class Database {
     $sql .= ";";
 
     $stmt = $this->pdo->prepare($sql);
+
     $stmt->execute();
 
     return $stmt;
@@ -109,14 +112,15 @@ class Database {
     $sql .= ";";
 
     $stmt = $this->pdo->prepare($sql);
+
     $stmt->execute();
 
     return $stmt;
   }
 
   public function exists($table, $array) {
-    $stmt = $this->select($table, $array);
+    $res = $this->select($table, $array);
 
-    return ($stmt->rowCount() > 0) ? true : false;
+    return ($res->rowCount() > 0) ? true : false;
   }
 }

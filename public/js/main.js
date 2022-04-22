@@ -8,6 +8,9 @@ const userResults = document.querySelector('.user-results');
 const postResults = document.querySelector('.post-results');
 const categoryResults = document.querySelector('.category-results');
 
+const flash = document.querySelector('.flash');
+const close = document.querySelector('.close');
+
 window.onload = () => {
   if(menu) {
     menu.style.display = "none";
@@ -16,7 +19,7 @@ window.onload = () => {
   if(toggleUsers) {
     userResults.style.display = "none";
     categoryResults.style.display = "none";
-    togglePosts.style.borderBottom = "3px solid #24252a";
+    togglePosts.style.borderBottom = "3px solid #4b77be";
   }
 }
 
@@ -37,14 +40,14 @@ if(toggleUsers) {
     categoryResults.style.display = "none";
     togglePosts.style.borderBottom = "none";
     toggleCategories.style.borderBottom = "none";
-    toggleUsers.style.borderBottom = "3px solid #24252a";
+    toggleUsers.style.borderBottom = "3px solid #4b77be";
   })
 
   togglePosts.addEventListener('click', () => {
     userResults.style.display = "none";
     postResults.style.display = "block";
     categoryResults.style.display = "none";
-    togglePosts.style.borderBottom = "3px solid #24252a";
+    togglePosts.style.borderBottom = "3px solid #4b77be";
     toggleUsers.style.borderBottom = "none";
     toggleCategories.style.borderBottom = "none";
   })
@@ -53,20 +56,26 @@ if(toggleUsers) {
     userResults.style.display = "none";
     postResults.style.display = "none";
     categoryResults.style.display = "block";
-    toggleCategories.style.borderBottom = "3px solid #24252a";
+    toggleCategories.style.borderBottom = "3px solid #4b77be";
     toggleUsers.style.borderBottom = "none";
     togglePosts.style.borderBottom = "none";
   })
 
   toggleUsers.addEventListener('hover', () => {
-    toggleUsers.style.borderBottom = "3px solid #24252a";
+    toggleUsers.style.borderBottom = "3px solid #4b77be";
   })
 
   togglePosts.addEventListener('hover', () => {
-    togglePosts.style.borderBottom = "3px solid #24252a";
+    togglePosts.style.borderBottom = "3px solid #4b77be";
   })
 
   toggleCategories.addEventListener('hover', () => {
-    toggleCategories.style.borderBottom = "3px solid #24252a";
+    toggleCategories.style.borderBottom = "3px solid #4b77be";
+  })
+}
+
+if(flash) {
+  close.addEventListener('click', () => {
+    flash.style.display = "none";
   })
 }

@@ -1,5 +1,3 @@
-<?php require_once VIEW_ROOT . '/includes/header.php'; ?>
-
 <?php require_once VIEW_ROOT . '/includes/sidebar.php'; ?>
 
 <div class="posts">
@@ -7,7 +5,7 @@
     <h3><?php echo $post_data->post_title; ?></h3>
     <h6>By
       <?php if($post_data->user_username): ?>
-        <a href="<?php echo BASE_URL; ?>/profile/<?php echo $post_data->user_username; ?>"><?php echo $post_data->user_username; ?></a>
+        <a href="/profile/<?php echo $post_data->user_username; ?>"><?php echo $post_data->user_username; ?></a>
       <?php else: ?>
         [Deleted]
       <?php endif; ?>
@@ -17,23 +15,20 @@
     <p><?php echo $post_data->post_text; ?></p>
   </div>
   
-  <?php if(isset($_SESSION['user'])): ?>
+  <?php if($user): ?>
     <div class="submit-comment">
       <div class="form">
         <h2>Comment</h2>
 
-        <form action="<?php $self; ?>" method="POST">
+        <form action="/comment/<?php echo $post_data->post_id; ?>" method="POST">
           <div class="form-group">
-            <?php if(isset($error)): ?>
-              <div class="error">
-                <p><?php echo $error; ?></p>
-              </div>
-            <?php endif; ?>
+            <?php error('form_error'); ?>
           </div>
           <div class="form-group">
             <textarea name="comment_text" placeholder="Comment"></textarea>
           </div>
           <div class="form-group">
+            <input type="hidden" name="token" value="<?php echo generate('token'); ?>">
             <input type="submit" name="create_comment" value="Comment">
           </div>
         </form>
@@ -46,17 +41,16 @@
       <div class="post">
         <h6>By
           <?php if($comment->user_username): ?>
-            <a href="<?php echo BASE_URL; ?>/profile/<?php echo $comment->user_username; ?>"><?php echo $comment->user_username; ?></a>
+            <a href="/profile/<?php echo $comment->user_username; ?>"><?php echo $comment->user_username; ?></a>
           <?php else: ?>
             [Deleted]
           <?php endif; ?>
 
           on <?php echo date('l j F Y H:i', strtotime($comment->comment_date)); ?>
         </h6>
+        
         <p><?php echo $comment->comment_text; ?></p>
       </div>
     <?php endforeach; ?>
   </div>
 </div>
-
-<?php require_once VIEW_ROOT . '/includes/footer.php'; ?>

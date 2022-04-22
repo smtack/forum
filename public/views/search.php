@@ -1,5 +1,3 @@
-<?php require_once VIEW_ROOT . '/includes/header.php'; ?>
-
 <?php require_once VIEW_ROOT . '/includes/sidebar.php'; ?>
 
 <div class="posts">
@@ -18,10 +16,10 @@
     <?php else: ?>
       <?php foreach($post_results as $post_result): ?>
         <div class="post">
-          <h3><a href="<?php echo BASE_URL; ?>/post/<?php echo $post_result->post_id; ?>"><?php echo $post_result->post_title; ?></a></h3>
+          <h3><a href="/post/<?php echo $post_result->post_id; ?>"><?php echo $post_result->post_title; ?></a></h3>
           <h6>By
             <?php if($post_result->user_username): ?>
-              <a href="<?php echo BASE_URL; ?>/profile/<?php echo $post_result->user_username; ?>"><?php echo $post_result->user_username; ?></a>
+              <a href="/profile/<?php echo $post_result->user_username; ?>"><?php echo $post_result->user_username; ?></a>
             <?php else: ?>
               [Deleted]
             <?php endif; ?>
@@ -38,10 +36,10 @@
     <?php else: ?>
       <?php foreach($category_results as $category_result): ?>
         <div class="post">
-          <h3><a href="<?php echo BASE_URL; ?>/category/<?php echo $category_result->category_id; ?>"><?php echo $category_result->category_name; ?></a></h3>
+          <h3><a href="/category/<?php echo $category_result->category_id; ?>"><?php echo $category_result->category_name; ?></a></h3>
           <h6>By
             <?php if($category_result->user_username): ?>
-              <a href="<?php echo BASE_URL; ?>/profile/<?php echo $category_result->user_username; ?>"><?php echo $category_result->user_username; ?></a>
+              <a href="/profile/<?php echo $category_result->user_username; ?>"><?php echo $category_result->user_username; ?></a>
             <?php else: ?>
               [Deleted]
             <?php endif; ?>
@@ -58,12 +56,10 @@
     <?php else: ?>
       <?php foreach($user_results as $user_result): ?>
         <div class="post">
-          <h3><a href="<?php echo BASE_URL; ?>/profile/<?php echo $user_result->user_username; ?>"><?php echo $user_result->user_username; ?></a></h3>
+          <h3><a href="/profile/<?php echo $user_result->user_username; ?>"><?php echo $user_result->user_username; ?></a></h3>
           <h6>Joined on <?php echo date('l j F Y H:i', strtotime($user_result->user_joined)); ?></h6>
         </div>
       <?php endforeach; ?>
     <?php endif; ?>
   </div>
 </div>
-
-<?php require_once VIEW_ROOT . '/includes/footer.php'; ?>
