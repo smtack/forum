@@ -1,6 +1,7 @@
 <?php
-// Sanitize database input and output
 
-function escape($io) {
-  return htmlentities($io, ENT_IGNORE, 'UTF-8');
+// Sanitise database output
+
+function escape($string) {
+  return htmlentities($string, ENT_IGNORE, 'UTF-8');
 }

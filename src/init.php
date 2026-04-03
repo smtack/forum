@@ -7,6 +7,10 @@ spl_autoload_register(function($class) {
 });
 
 ini_set("display_errors", "on");
+ini_set("display_startup_errors", "on");
+ini_set("log_errors", "on");
+
+error_reporting(E_ALL);
 
 $db = new Database();
 

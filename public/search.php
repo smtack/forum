@@ -1,5 +1,5 @@
 <?php
-require_once 'src/init.php';
+require_once '../src/init.php';
 
 if(isset($_GET['s']))
 {

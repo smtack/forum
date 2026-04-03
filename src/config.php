@@ -5,8 +5,11 @@ define('DB_USER', '');
 define('DB_PASS', '');
 define('DB_CHAR' , '');
 
+// Base application URL: Don't include trailing slash:
 define('BASE_URL', '');
-define('VIEW_ROOT', dirname(__FILE__) . '/../public/views');
 
-define('ADMIN_ROOT', '');
-define('ADMIN_VIEW_ROOT', dirname(__FILE__) . '/../admin/views');
+define('ADMIN_ROOT', BASE_URL . '/admin');
+
+define('VIEW_ROOT', __DIR__ . '/views');
+
+define('ADMIN_VIEW_ROOT', __DIR__ . '/views/admin');

@@ -1,5 +1,5 @@
 <?php
-require_once 'src/init.php';
+require_once '../src/init.php';
 
 $id = isset($_GET['category_id']) ? escape($_GET['category_id']) : header('Location: ' . BASE_URL);
 

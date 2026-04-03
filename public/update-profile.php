@@ -1,5 +1,5 @@
 <?php
-require_once 'src/init.php';
+require_once '../src/init.php';
 
 if(!$user->loggedIn())
 {
@@ -42,11 +42,11 @@ if(isset($_POST['update-profile-picture']))
   }
   else
   {
-    $target_dir = "uploads/profile-pictures/";
+    $target_dir = "../uploads/profile-pictures/";
     $file_name = basename($_FILES['profile-picture']['name']);
     $path = $target_dir . $file_name;
     $file_type = pathinfo($path, PATHINFO_EXTENSION);
-    $allow_types = array('jpg', 'png', 'PNG');
+    $allow_types = array('jpg', 'jpeg', 'png', 'PNG');
 
     if(!in_array($file_type, $allow_types))
     {

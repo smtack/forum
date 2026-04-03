@@ -1,5 +1,5 @@
 <?php
-require_once 'src/init.php';
+require_once '../src/init.php';
 
 $post = new Post($db);
 
